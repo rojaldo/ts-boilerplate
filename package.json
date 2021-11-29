@@ -1,0 +1,29 @@
+{
+  "name": "rxjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-js": "node -r esm ./src/sample.js",
+    "dev": "tsc ./src/sample.ts --target es5 --emitDecoratorMetadata --experimentalDecorators && node ./src/sample.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^16.11.10",
+    "es6-promise": "^4.2.8",
+    "esm": "^3.2.25",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.4.0",
+    "rxjs-compat": "^6.6.7",
+    "xhr2": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/node-fetch": "^3.0.3",
+    "node-fetch": "^2.6.6",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.2"
+  }
+}
