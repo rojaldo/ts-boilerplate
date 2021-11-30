@@ -19,4 +19,4 @@ const data$ = new Observable(observer => {
         .catch(err => observer.error(err));
     });
 
-data$.subscribe(data => log(data));
+data$.subscribe(data => log(data), err => log(err), () => log('complete'));

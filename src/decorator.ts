@@ -1,39 +1,55 @@
-class MyNode<T> {
-    constructor(public value: T, public next: MyNode<T> = null, public prev: MyNode<T> = null) { }
-
-    toString(): string {
-        return `${this.value}`;
-    }
-}
-
-class LinkedList<T> {
-    constructor(public head: MyNode<T> = null, public tail: MyNode<T> = null) { }
-
-    add(value: T): void {
-        const node = new MyNode(value);
-        if (this.head === null) {
-            this.head = node;
-            this.tail = node;
-        } else {
-            this.tail.next = node;
-            node.prev = this.tail;
-            this.tail = node;
+function IBlock<T extends { new(...args: any[]): {} }>(constructor: T) {
+    return class extends constructor {
+        newProperty = "new property";
+        type = "IBlock";
+        shape = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [1, 1, 1, 1],
+            [0, 0, 0, 0]
+        ];
+        indexRotation = 0;
+        rotations = [
+            [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [1, 1, 1, 1],
+                [0, 0, 0, 0]
+            ],
+            [
+                [0, 0, 1, 0],
+                [0, 0, 1, 0],
+                [0, 0, 1, 0],
+                [0, 0, 1, 0]
+            ]
+        ]
+    
+        rotate() {
+            this.indexRotation = (this.indexRotation + 1) % this.rotations.length;
+            this.shape = this.rotations[this.indexRotation];
         }
     }
-
-    toString(): string {
-        let result = '';
-        let current = this.head;
-        while (current) {
-            result += `${current.toString()} -> `;
-            current = current.next;
-        }
-        return result;
-    }
 }
+@IBlock
+class TetrisPiece {
+    x = 0;
+    y = 0;
+    type = '';
+    shape = [];
+    constructor() {
 
-const list = new LinkedList<any>();
-list.add(1);
-list.add('2');
-list.add(true);
-console.log(list.toString());
+    }
+
+    rotate() {
+        return "TetrisPiece rotate";
+    }
+
+    getShape() {
+        return this.shape;
+    }
+    
+}
+let tetrisPiece = new TetrisPiece();
+console.log(tetrisPiece.getShape());
+tetrisPiece.rotate();
+console.log(tetrisPiece.getShape());
