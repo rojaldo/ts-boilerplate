@@ -30,4 +30,4 @@ const countCharacter = (myString: string, char: string): Observable<number> => {
     );
 }
 
-countCharacter('hello', 'l').subscribe(console.log);
+isLeapYear(2000).subscribe(x => console.log(x));

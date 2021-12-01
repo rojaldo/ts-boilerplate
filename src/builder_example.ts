@@ -2,7 +2,7 @@
 class TetrisPiece {
     rotation = 0;
     shape: number[][] = [[], [], [], []];
-    color = '#0095DD';
+    color = '';
     constructor(public type: number, public x:  number, public y: number) {
     }
     // Rotate the piece
